@@ -1,0 +1,5 @@
+Các chức năng đã làm được:
+- Thêm sửa xóa product và categories, hiển thị được sản phẩm ra trang chủ
+- Đăng ký đăng nhập có chuyển trang, form có validate, xóa có confirm
+- Hiển thị thông báo khi nhập sai email hoặc mật khẩu
+- Khi thêm sản phẩm thành công có thông báo

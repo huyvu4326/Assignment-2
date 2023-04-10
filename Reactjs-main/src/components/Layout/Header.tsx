@@ -1,8 +1,24 @@
-import React from "react";
+import { Button } from "antd";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
 const Header = (props: Props) => {
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token); // kiểm tra token có tồn tại hay không
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false); // đăng xuất
+    navigate("/admin");
+  };
+
   return (
     <div>
       <header
@@ -47,11 +63,13 @@ const Header = (props: Props) => {
                 </a>
               </li>
             </ul>
-            <i className="bi bi-list mobile-nav-toggle"></i>
           </nav>
         </div>
+        
       </header>
+      
     </div>
+    
   );
 };
 
