@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Product A update",
+      "price": "1000101010",
+      "desc": "dfghdhf"
+    },
+    {
+      "name": "Products B",
+      "price": "2000",
+      "desc": "fsdgbsdV",
+      "id": 2
+    },
+    {
+      "name": "Product C",
+      "price": "2020202",
+      "desc": "hà huy vũ",
+      "id": 3
+    },
+    {
+      "name": "ahf huy cuadxad",
+      "price": "5151635",
+      "desc": "advc",
+      "id": 4
+    }
+  ]
+}
