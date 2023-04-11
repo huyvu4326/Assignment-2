@@ -14,7 +14,7 @@ const Signin = (props: Props) => {
       const { data: user } = await login(values);
       localStorage.setItem("token", JSON.stringify(user.accessToken));
       message.success("Đăng nhập thành công!", 2);
-      navigate("/admin")
+        navigate("/admin")
     } catch (error) {
       message.error("Email hoặc mật khẩu không chính xác");
     }

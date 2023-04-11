@@ -12,47 +12,39 @@ const ProductsDetail = () => {
       console.log(response.data);
     });
   }, []);
-
-  //   let strImage = '';
-  //   console.log(strImage)
-  //   if(project.img) {
-  //     project.img.forEach(element => {
-  //       strImage += '<img src="'+ element +'" className="img-fluid">';
-  //     });
-
-  //   }
-
   return (
     <div>
       <div>
         <Header />
       </div>
       <main id="main">
-        <section id="portfolio-details" className="portfolio-details">
+      <section id="portfolio-details" className="portfolio-details">
           <div className="container">
             <div className="row gy-4">
               <div className="col-lg-8">
+                <div className="portfolio-details-slider swiper">
+                  <div className="swiper-wrapper align-items-center">
+                    <div className="swiper-slide">
+                      <img src={product.img} alt="" />
+                    </div>
+                  </div>
+                  <div className="swiper-pagination"></div>
+                </div>
               </div>
               <div className="col-lg-4">
                 <div className="portfolio-info">
-                  <h3>Thông tin dự án</h3>
+                  <h3>Thông Tin Dự Án</h3>
                   <ul>
-                    <li>
-                      <strong>Tên dự án</strong>: {product.name}
-                    </li>
-                    <li>
-                      <strong>Mô tả</strong>: {product.description}
-                    </li>
-                    <li>
-                      <strong>Giá</strong>: {product.price}
-                    </li>
-                    <li>
-                      <strong>Github</strong>:{" "}
-                      <a href="">
-                        <i className="fa-brands fa-github">{product.link}</i>
-                      </a>
-                    </li>
+                    <li><strong>Tên Dự Án</strong>: {product.name}</li>
+                    <li><strong>Giá</strong>: {product.price}</li>
+                    <li><strong>Github</strong>: <a href={product.link}>{product.link}</a></li>
                   </ul>
+                </div>
+                <div className="portfolio-description">
+                  <h2>Mô Tả</h2>
+                  <p>
+                    {product.description}
+                  </p>
                 </div>
               </div>
             </div>

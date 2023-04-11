@@ -8,6 +8,7 @@ interface IProduct {
   id: number;
   name: string;
   price: string;
+  img: string;
   desc: string;
   link: string;
 }
@@ -71,7 +72,13 @@ const AddProductPage = (props: IProps) => {
         >
           <Input />
         </Form.Item>
-
+        <Form.Item
+          label="Product IMG"
+          name="img"
+          rules={[{ required: true, message: "Vui lòng nhập link ảnh!" }]}
+        >
+          <Input />
+        </Form.Item>
         <Form.Item
           label="Product Description"
           name="description"
@@ -89,7 +96,7 @@ const AddProductPage = (props: IProps) => {
         <Form.Item
           label="Category"
           name="categoryId"
-          // rules={[{ required: true, message: 'Vui lòng chọn danh mục!' }]}
+          rules={[{ required: true, message: 'Vui lòng chọn danh mục!' }]}
         >
           <Select>
             {categories &&

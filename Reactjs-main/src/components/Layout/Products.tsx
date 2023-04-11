@@ -32,13 +32,8 @@ const Products = (props: Props) => {
               <div className="col-md-4" key={product._id}>
                 <div className="service-box">
                   <div className="service-content">
-                  <img src="./src/assets/img/work-4.jpg" alt="" width={"350px"}/>
+                  <img src={product.img} alt="" width={"350px"}/>
                     <h2 className="s-title">{product.name}</h2>
-                    <p className="s-description text-center">
-                      {product.description}
-                    </p>
-                    <p className="s-price text-center">{product.price}</p>
-                    <a href={product.link}>Link Github</a>
                     <br />
                     <Link to={`/products/${product._id}`}>Chi tiết</Link>
                   </div>

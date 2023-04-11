@@ -6,6 +6,7 @@ import { IProduct } from "../../../interfaces/product";
 import { ICategory } from "../../../interfaces/category";
 import { getCategories } from "../../../api/category";
 
+
 const ProductManagementPage = (props) => {
   
   // const { categories, products, onRemove } = props;
@@ -20,6 +21,7 @@ const ProductManagementPage = (props) => {
           key: item._id,
           name: item.name,
           price: item.price,
+          img: item.img,
           desc: item.description,
           link: item.link,
           cate: category ? category.name : "",
@@ -39,6 +41,7 @@ const ProductManagementPage = (props) => {
     key: string;
     name: string;
     price: number;
+    img: string,
     desc: string;
     link: string,
     cate: string;
@@ -56,6 +59,13 @@ const ProductManagementPage = (props) => {
       dataIndex: "price",
       key: "price",
       width: "15%",
+    },
+    {
+      title: "Image",
+      dataIndex: "img",
+      key: "img",
+      width: "15%",
+      render: (url: string) => <img src={url} alt="Image" style={{width: 80}}/>
     },
     {
       title: "Description",

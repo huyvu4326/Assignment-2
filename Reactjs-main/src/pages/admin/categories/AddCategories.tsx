@@ -7,6 +7,9 @@ import { getCategories } from "../../../api/category";
 interface ICategory {
   id: number;
   name: string;
+  price: string;
+  desc: string;
+  link: string;
 }
 interface IProps {
   onAdd: (category: ICategory) => void;
@@ -38,7 +41,7 @@ const AddCategoriesPage = (props: IProps) => {
         autoComplete="off"
       >
         <Form.Item
-          label="Product Name"
+          label="Category Name"
           name="name"
           rules={[{ required: true, message: "Vui lòng nhập tên danh mục!" }]}
         >

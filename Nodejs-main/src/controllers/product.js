@@ -5,6 +5,7 @@ import Category from "../models/category";
 const productSchema = Joi.object({
     name: Joi.string().required(),
     price: Joi.string().required(),
+    img: Joi.string().required(),
     description: Joi.string().required(),
     link: Joi.string().required(),
     categoryId: Joi.string().required(),

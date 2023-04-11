@@ -88,6 +88,13 @@ const UpdateProductPage = (props: IProps) => {
         >
           <Input value={`${form.getFieldValue("price")}`} />
         </Form.Item>
+        <Form.Item
+          label="Image"
+          name="img"
+        // rules={[{ required: true, message: 'Vui lòng nhập giá sản phẩm!' }]}
+        >
+          <Input value={`${form.getFieldValue("img")}`} />
+        </Form.Item>
 
         <Form.Item
           label="Product Description"
