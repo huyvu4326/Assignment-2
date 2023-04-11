@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { useRef, useState, useEffect } from "react";
-import { Button, Space, Table } from "antd";
+import { Button, Input, Space, Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { IProduct } from "../../../interfaces/product";
 import { ICategory } from "../../../interfaces/category";
@@ -11,23 +11,31 @@ const ProductManagementPage = (props) => {
   
   // const { categories, products, onRemove } = props;
   const [categories, setCategories] = useState<ICategory[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+
   const removeProduct = (id: IProduct) => {
     props.onRemove(id);
   };
+
   const data = Array.isArray(props.products)
-    ? props.products.map((item) => {
-        const category = categories?.find((cat) => cat._id === item.categoryId);
-        return {
-          key: item._id,
-          name: item.name,
-          price: item.price,
-          img: item.img,
-          desc: item.description,
-          link: item.link,
-          cate: category ? category.name : "",
-        };
-      })
+    ? props.products
+        .filter((product) =>
+          product.name.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+        .map((item) => {
+          const category = categories?.find((cat) => cat._id === item.categoryId);
+          return {
+            key: item._id,
+            name: item.name,
+            price: item.price,
+            img: item.img,
+            desc: item.description,
+            link: item.link,
+            cate: category ? category.name : "",
+          };
+        })
     : [];
+
   useEffect(() => {
     getCategories()
       .then((response) => {
@@ -53,6 +61,9 @@ const ProductManagementPage = (props) => {
       dataIndex: "name",
       key: "name",
       width: "15%",
+      // render: (text: string, record: DataType) => (
+      //   <Link to={`/products/${record.key}`}>{text}</Link>
+      // ),
     },
     {
       title: "Price",
@@ -110,7 +121,16 @@ const ProductManagementPage = (props) => {
   ];
 
   return (
-    <Table columns={columns} dataSource={data} pagination={{ pageSize: 7 }} />
+    <div>
+      <Input
+        placeholder="Search by product name"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        style={{ marginBottom: "16px", width: "300px" }}
+      />
+      <Table columns={columns} dataSource={data} pagination={{ pageSize: 7 }} />
+    </div>
+    
   );
 };
 
